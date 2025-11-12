@@ -156,7 +156,7 @@ export default function RequestCallback() {
 
       //GTM form submission tracking
       eventTracking({
-        eventName: 'formSubmissionSuccess',
+        eventName: 'formSubmission',
         formName: 'RequestCallbackForm',
         formId: 'request_callback_form',
         leadType: 'Enquiry',
