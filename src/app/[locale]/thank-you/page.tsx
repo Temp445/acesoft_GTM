@@ -19,21 +19,26 @@ import { useEffect } from "react";
 const WhatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 const ThankYouPage = () => {
 
-   useEffect(() => {
-    const flag = sessionStorage.getItem("form_submitted");
+  useEffect(() => {
+  const formId = sessionStorage.getItem("form_submitted");
+  if (!formId) return;
 
-    if (flag === "yes") {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-          'event': 'form_submit', 
-          'formName': 'ContactForm', 
-          'formId': 'contact_form', 
-          'leadType': 'Enquiry' 
-      });
+  const formNames: Record<string, string> = {
+    contact_form: "Contact Form",
+    request_callback_form: "Request Callback Form"
+  };
 
-      sessionStorage.removeItem("form_submitted");
-    }
-  }, []);
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: "form_submit",
+    formId,
+    formName: formNames[formId] || "Form",
+    leadType: "Enquiry"
+  });
+
+  sessionStorage.removeItem("form_submitted");
+}, []);
+
 
   const handleClick = () => {
     const message = encodeURIComponent(

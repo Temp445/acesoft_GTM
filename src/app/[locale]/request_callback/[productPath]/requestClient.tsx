@@ -155,7 +155,7 @@ export default function RequestCallback() {
       await emailjs.send(service_ID, template_ID, formData, publicKey);
 
       //GTM form submission tracking
-      sessionStorage.setItem("form_submitted", "yes");
+      sessionStorage.setItem("form_submitted", "request_callback_form");
 
 
       formCurrent.reset();

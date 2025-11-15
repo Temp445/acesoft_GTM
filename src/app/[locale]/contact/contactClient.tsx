@@ -118,8 +118,8 @@ const contactClient: React.FC = () => {
 
     try {
       await emailjs.send(service_ID, template_ID, formData, publicKey);
-      
-      sessionStorage.setItem("form_submitted", "yes");
+
+      sessionStorage.setItem("form_submitted", "contact_form");
 
       formCurrent.reset();
       setEmail('');
