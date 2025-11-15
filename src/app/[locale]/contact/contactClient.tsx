@@ -120,14 +120,14 @@ const contactClient: React.FC = () => {
       await emailjs.send(service_ID, template_ID, formData, publicKey);
 
       //GTM form submission tracking
-      window.dataLayer = window.dataLayer || []; 
-      window.dataLayer.push({ 
-         'event': 'formSubmissionSuccess', 
-         'formName': 'ContactForm', 
-         'formId': 'contact_form', 
-         'leadType': 'Enquiry' 
-}); 
-
+//       window.dataLayer = window.dataLayer || []; 
+//       window.dataLayer.push({ 
+//          'event': 'formSubmissionSuccess', 
+//          'formName': 'ContactForm', 
+//          'formId': 'contact_form', 
+//          'leadType': 'Enquiry' 
+// }); 
+sessionStorage.setItem("form_submitted", "yes");
 
       formCurrent.reset();
       setEmail('');

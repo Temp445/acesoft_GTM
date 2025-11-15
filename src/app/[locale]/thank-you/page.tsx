@@ -14,9 +14,27 @@ import Logo from "@/assets/Images/logo1.png";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
 const WhatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 const ThankYouPage = () => {
+
+   useEffect(() => {
+    const flag = sessionStorage.getItem("form_submitted");
+
+    if (flag === "yes") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+          'event': 'formSubmissionSuccess', 
+          'formName': 'ContactForm', 
+          'formId': 'contact_form', 
+          'leadType': 'Enquiry' 
+      });
+
+      sessionStorage.removeItem("form_submitted");
+    }
+  }, []);
+
   const handleClick = () => {
     const message = encodeURIComponent(
       "Hello, I want to know more about your services."
