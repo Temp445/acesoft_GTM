@@ -155,12 +155,7 @@ export default function RequestCallback() {
       await emailjs.send(service_ID, template_ID, formData, publicKey);
 
       //GTM form submission tracking
-      eventTracking({
-        eventName: 'formSubmissionSuccess',
-        formName: 'RequestCallbackForm',
-        formId: 'request_callback_form',
-        leadType: 'Enquiry',
-      })
+      sessionStorage.setItem("form_submitted", "yes");
 
 
       formCurrent.reset();

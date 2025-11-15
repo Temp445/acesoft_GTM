@@ -25,7 +25,7 @@ const ThankYouPage = () => {
     if (flag === "yes") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-          'event': 'formSubmissionSuccess', 
+          'event': 'form_submit', 
           'formName': 'ContactForm', 
           'formId': 'contact_form', 
           'leadType': 'Enquiry' 
