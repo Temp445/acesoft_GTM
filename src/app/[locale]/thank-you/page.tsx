@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import { eventTracking } from "@/lib/gtm";
 
 const WhatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 const ThankYouPage = () => {
@@ -28,13 +29,12 @@ const ThankYouPage = () => {
     request_callback_form: "Request Callback Form"
   };
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "form_submit",
-    formId,
-    formName: formNames[formId] || "Form",
-    leadType: "Enquiry"
-  });
+   eventTracking({
+        eventName: 'form_submit',
+        formName: formNames[formId] || "Form",
+        formId,
+        leadType: 'Enquiry',
+      })
 
   sessionStorage.removeItem("form_submitted");
 }, []);
